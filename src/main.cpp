@@ -1,15 +1,12 @@
 #include <iostream>
-#include <stdlib.h>
-#include <curl/curl.h>
-#include <unistd.h>
 #include <ctime>
 #include "database.h"
-#include <jsoncpp/json/json.h>
+#include "CurlPostHandler.h"
+
 
 #define DATABASE_FILE "fibonacci.db"
-#define SERVER_URL "http://example.com/upload"
+#define SERVER_URL "https://www.httpbin.org/post"
 
-//https://www.tutorialspoint.com/sqlite/sqlite_c_cpp.htm
 
 long long fibonacci(int n) 
 {
@@ -34,9 +31,11 @@ int main()
 {  
     Database db(DATABASE_FILE);
 
+    CurlPostHandler CP(cpr::Url(SERVER_URL));
+
     int n = 0;
- 
-    while (n < 50)
+
+    while (n < 3)
     {
         int delay = 1;
 
@@ -47,6 +46,7 @@ int main()
         system("clear");
 
         db.Update(n + 1, fibonacci(n));
+        CP.Request(n + 1, fibonacci(n));
 
         n += 1;
 
