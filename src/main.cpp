@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <ctime>
 #include "database.h"
+#include <jsoncpp/json/json.h>
 
 #define DATABASE_FILE "fibonacci.db"
 #define SERVER_URL "http://example.com/upload"

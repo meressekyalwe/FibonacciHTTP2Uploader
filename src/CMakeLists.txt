@@ -9,3 +9,4 @@ include_directories(${SQLITE3_INCLUDE_DIR})
 
 target_link_libraries(FibonacciHTTP2Uploader PRIVATE cpr::cpr)
 target_link_libraries(FibonacciHTTP2Uploader PRIVATE SQLite::SQLite3)
+target_link_libraries(FibonacciHTTP2Uploader ${JSONCPP_LINK})
