@@ -5,7 +5,7 @@
 
 
 #define DATABASE_FILE "fibonacci.db"
-#define SERVER_URL "https://www.httpbin.org/post"
+#define SERVER_URL "http://www.httpbin.org/post"
 
 
 long long fibonacci(int n) 
@@ -31,11 +31,11 @@ int main()
 {  
     Database db(DATABASE_FILE);
 
-    CurlPostHandler CP(cpr::Url(SERVER_URL));
+    CurlPostHandler cp(cpr::Url(SERVER_URL));
 
     int n = 0;
 
-    while (n < 3)
+    while (true)
     {
         int delay = 1;
 
@@ -43,10 +43,8 @@ int main()
 
         clock_t now = clock();
 
-        system("clear");
-
         db.Update(n + 1, fibonacci(n));
-        CP.Request(n + 1, fibonacci(n));
+        cp.Request(n + 1, fibonacci(n));
 
         n += 1;
 

@@ -1,5 +1,6 @@
-#include "CurlPostHandler.h"
+
 #include <iostream>
+#include "CurlPostHandler.h"
 
 CurlPostHandler::CurlPostHandler(cpr::Url url)
 {
